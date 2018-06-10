@@ -6,10 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+3.times do |topic|
+    Topic.create!(
+        title: "Topic #{topic}"
+    )
+end
+
 10.times do |blog|
     Blog.create!(
         title: Faker::Lorem.sentence,
-        body: Faker::Lorem.paragraph
+        body: Faker::Lorem.paragraph,
+        topic_id: Topic.last.id
     )
 end
 
@@ -20,10 +27,20 @@ end
     )
 end
 
-9.times do |profolio_item|
+8.times do |profolio_item|
     Portfolio.create!(
         title: "Title: House #{Faker::GameOfThrones.house}",
-        subtitle: Faker::Lorem.sentence,
+        subtitle: "Ruby on Rails",
+        body: Faker::Lorem.paragraph,
+        main_image: "http://via.placeholder.com/600x400",
+        thumb_image: "http://via.placeholder.com/350x200", 
+    )
+end
+
+1.times do |profolio_item|
+    Portfolio.create!(
+        title: "Title: House #{Faker::GameOfThrones.house}",
+        subtitle: "Angular",
         body: Faker::Lorem.paragraph,
         main_image: "http://via.placeholder.com/600x400",
         thumb_image: "http://via.placeholder.com/350x200", 
